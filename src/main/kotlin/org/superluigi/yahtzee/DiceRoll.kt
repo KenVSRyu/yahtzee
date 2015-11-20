@@ -30,12 +30,15 @@ class DiceRoll(
 
         val numDiceToRoll = 5 - keptDice.size
 
-        val diceRoll = RollDice.apply(numDiceToRoll)
-
         val newDice = arrayListOf<Int>()
 
         newDice.addAll(keptDice)
-        newDice.addAll(diceRoll)
+        // This is broken
+        for (i in 1..numDiceToRoll) {
+
+            newDice.add(1)
+
+        }
 
         newDice.forEach {
 

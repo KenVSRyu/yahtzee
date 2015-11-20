@@ -1,38 +1,29 @@
 package org.superluigi.yahtzee
 
+import org.superluigi.yahtzee.view.Face
+
 object Roll {
 
-    fun apply(numDice: Int): List<Int> {
+    fun apply(): Face {
 
-        val dice = IntArray(numDice)
-
-        return dice.map {
-
-            val rand = Math.random()
-            assign(rand)
-
-        }
-
-    }
-
-    private fun assign(rand: Double): Int {
+        val rand = Math.random()
 
         if (rand < 1.0 / 6.0)
-            return 1
+            return Face.ONE
 
         if (rand < 2.0 / 6.0)
-            return 2
+            return Face.TWO
 
         if (rand < 3.0 / 6.0)
-            return 3
+            return Face.THREE
 
         if (rand < 4.0 / 6.0)
-            return 4
+            return Face.FOUR
 
         if (rand < 5.0 / 6.0)
-            return 5
+            return Face.FIVE
 
-        return 6
+        return Face.SIX
 
     }
 

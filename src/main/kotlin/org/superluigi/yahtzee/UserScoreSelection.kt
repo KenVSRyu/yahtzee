@@ -13,13 +13,13 @@ object UserScoreSelection {
 
         availableScoreList.forEachIndexed { index, pair ->
 
-            println("$index\t${pair.first}\t${pair.second}")
+            println("${index + 1}\t${pair.first}\t${pair.second}")
 
         }
 
         var userInput = readLine()!!.toInt()
 
-        while (!availableScoreList.indices.containsRaw(userInput)) {
+        while (!availableScoreList.indices.containsRaw(userInput - 1)) {
 
             println("$userInput is not on the list. Try again.")
 

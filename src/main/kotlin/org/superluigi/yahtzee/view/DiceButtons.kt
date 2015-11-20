@@ -1,11 +1,13 @@
 package org.superluigi.yahtzee.view
 
+import javafx.scene.control.Button
 import javafx.scene.layout.ColumnConstraints
 import javafx.scene.layout.GridPane
 import javafx.scene.layout.RowConstraints
+import org.superluigi.yahtzee.model.Die
 
 class DiceButtons(
-    val diceVisualizer: DiceVisualizer
+    val dice: List<Die>
 ) {
 
     private val diceGrid = GridPane()
@@ -14,9 +16,9 @@ class DiceButtons(
     private val dieColumn = ColumnConstraints()
     private val diceRow = RowConstraints()
 
-    fun addToGrid(grid: GridPane) {
+    fun addToGrid(grid: GridPane): Pair<GridPane, List<Button>> {
 
-        val dice = diceVisualizer.apply()
+        val diceButtons = DiceToButtons.apply(dice)
 
         diceGrid.gridLinesVisibleProperty().set(true)
 
@@ -40,13 +42,15 @@ class DiceButtons(
 
         diceGrid.rowConstraints.add(diceRow)
 
-        dice.forEachIndexed { index, die ->
+        diceButtons.forEachIndexed { index, die ->
 
             diceGrid.add(die, index, 0)
 
         }
 
         grid.add(diceGrid, 0, 0)
+
+        return Pair(diceGrid, diceButtons)
 
     }
 

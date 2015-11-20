@@ -5,30 +5,21 @@ import javafx.event.EventHandler
 import javafx.scene.control.Button
 import javafx.scene.image.Image
 import javafx.scene.layout.*
-import org.superluigi.yahtzee.model.CurrentDice
+import org.superluigi.yahtzee.model.Die
 import java.io.ByteArrayInputStream
 import java.io.File
 
-class DiceToButtons(
-    val currentDice: CurrentDice
-) {
+object DiceToButtons {
 
-    fun apply(): List<Button> {
+    fun apply(dice: List<Die>): List<Button> {
 
-        val dice = Array(5, { Button() })
-
-        val faces =
-            listOf(
-                currentDice.face1,
-                currentDice.face2,
-                currentDice.face3,
-                currentDice.face4,
-                currentDice.face5
-            )
+        val newButtons = Array(5, { Button() })
 
         val buttons =
 
-            faces.mapIndexed { index, face ->
+            dice.mapIndexed { index, die ->
+
+                val face = die.face
 
                 val imagePath = face.path
 
@@ -49,7 +40,7 @@ class DiceToButtons(
 
                 val background = Background(backgroundImage)
 
-                val button = dice[index]
+                val button = newButtons[index]
 
                 button.maxWidth = Double.MAX_VALUE
                 button.maxHeight = Double.MAX_VALUE
@@ -61,7 +52,16 @@ class DiceToButtons(
 
                         override fun handle(event: ActionEvent) {
 
-                            println("Six.")
+                            if (die.locked) {
+
+                                die.locked = false
+
+                            }
+                            else {
+
+                                die.locked = true
+
+                            }
 
                         }
 

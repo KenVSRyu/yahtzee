@@ -1,11 +1,32 @@
 package org.superluigi.yahtzee
 
-import org.apache.commons.lang3.NotImplementedException
-
 object DisplayScoreSheet {
 
-    fun apply() {
-        throw NotImplementedException("Successful Fail! :)")
+    fun apply(scoreSheet: ScoreSheet) {
+
+        println("Score sheet:")
+
+        scoreSheet.upperSection.forEach { name, score ->
+
+            val displayedScore = score ?: "--"
+
+            println("$name:\t$displayedScore")
+
+        }
+
+        println("Sum: ${scoreSheet.sum}")
+        println("Bonus: ${scoreSheet.bonus}")
+
+        scoreSheet.lowerSection.forEach { name, score ->
+
+            val displayedScore = score ?: "--"
+
+            println("$name:\t$displayedScore")
+
+        }
+
+        println("Total: ${scoreSheet.total}")
+
     }
 }
 

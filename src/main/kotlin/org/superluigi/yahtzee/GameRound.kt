@@ -1,35 +1,11 @@
 package org.superluigi.yahtzee
 
-import java.util.*
-
 object GameRound {
 
     fun apply(scoreSheet: ScoreSheet,
               user: Boolean): ScoreSheet {
 
-        println("Score sheet:")
-
-        HashMap.forEach { name, score ->
-
-            val displayedScore = score ?: "--"
-
-            println("$name:\t$displayedScore")
-
-        }
-
-        println("org.superluigi.yahtzee.Sum: ${scoreSheet.sum}")
-        println("Bonus: ${scoreSheet.bonus}")
-
-        HashMap.forEach { name, score ->
-
-            val displayedScore = score ?: "--"
-
-            println("$name:\t$displayedScore")
-
-        }
-
-        println("Total: ${scoreSheet.total}")
-
+        DisplayScoreSheet.apply(scoreSheet)
 
         val diceSelection =
             if (user)
@@ -43,13 +19,13 @@ object GameRound {
             else
                 { availableScores: Map<String, Int> -> AIScoreSelection.apply(availableScores) }
 
-        val diceThrow = DiceThrow(diceSelection)
+        val diceRoll = DiceRoll(diceSelection)
 
         var dice = listOf<Int>()
 
         for (i in 1..3) {
 
-            val result = diceThrow.apply(dice)
+            val result = diceRoll.apply(dice)
 
             dice = result.first
 

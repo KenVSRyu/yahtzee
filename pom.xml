@@ -22,7 +22,7 @@
                         </goals>
                         <configuration>
                             <sourceDirs>
-                                <source>src/main/kotlin</source>
+                                <source>src/org.superluigi.yahtzee.main/kotlin</source>
                             </sourceDirs>
                         </configuration>
                     </execution>
@@ -47,6 +47,13 @@
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
             <version>${kotlin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>javafx</artifactId>
+            <version>1.8.0_60</version>
+            <systemPath>${java.home}/lib/jfxswt.jar</systemPath>
+            <scope>system</scope>
         </dependency>
     </dependencies>
     <properties>

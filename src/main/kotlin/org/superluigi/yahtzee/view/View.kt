@@ -1,12 +1,10 @@
-package org.protoworld.gui
+package org.superluigi.yahtzee.view
 
 import javafx.application.Application
 import javafx.scene.Scene
-import javafx.scene.control.Button
-import javafx.scene.layout.ColumnConstraints
 import javafx.scene.layout.GridPane
-import javafx.scene.layout.RowConstraints
 import javafx.stage.Stage
+import org.superluigi.yahtzee.model.Die
 
 class View : Application() {
 
@@ -15,38 +13,29 @@ class View : Application() {
         val grid = GridPane()
         grid.gridLinesVisibleProperty().set(true)
 
-        val dieColumn = ColumnConstraints()
-        dieColumn.percentWidth = 20.0
+        val dice =
+            listOf(
+                Die(Face.TWO, false),
+                Die(Face.THREE, false),
+                Die(Face.FOUR, false),
+                Die(Face.FIVE, false),
+                Die(Face.SIX, false)
+            )
 
-        val diceRow = RowConstraints()
-        diceRow.percentHeight = 15.0
+        val diceButtonAdder = DiceButtons(dice)
 
-        grid.columnConstraints.add(dieColumn)
-        grid.columnConstraints.add(dieColumn)
-        grid.columnConstraints.add(dieColumn)
-        grid.columnConstraints.add(dieColumn)
-        grid.columnConstraints.add(dieColumn)
-        grid.rowConstraints.add(diceRow)
+        val pair = diceButtonAdder.addToGrid(grid)
+
+        val diceGrid = pair.first
+        val diceButtons = pair.second
+
+        RollButton(dice, diceGrid).addToGrid(grid)
+
+        ScoreSheet.addToGrid(grid)
+
+        Dialog.addToGrid(grid)
 
         val scene = Scene(grid, 750.0, 1000.0)
-
-        val die1 = Button("1")
-        val die2 = Button("2")
-        val die3 = Button("3")
-        val die4 = Button("4")
-        val die5 = Button("5")
-
-        grid.add(die1, 0, 0)
-        grid.add(die2, 1, 0)
-        grid.add(die3, 2, 0)
-        grid.add(die4, 3, 0)
-        grid.add(die5, 4, 0)
-
-        val rollButton = Button("ROLL!")
-
-        GridPane.setColumnSpan(rollButton, 5)
-
-        grid.add(rollButton, 0, 1)
 
         primaryStage.title = "YAHTZEE!"
 

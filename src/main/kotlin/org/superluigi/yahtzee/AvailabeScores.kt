@@ -8,12 +8,12 @@ object AvailabeScores {
 
         val fromUpperSection =
             upperSection.fields
-                .filter { field -> scoreSheet.upperSection.get(field.key) != null }
+                .filter { field -> scoreSheet.upperSection.get(field.key) == null }
                 .toList()
 
         val fromLowerSection =
             lowerSection.fields
-                .filter { field -> scoreSheet.lowerSection.get(field.key) != null }
+                .filter { field -> scoreSheet.lowerSection.get(field.key) == null }
                 .toList()
 
         val arrayList = arrayListOf<Pair<String, Int>>()

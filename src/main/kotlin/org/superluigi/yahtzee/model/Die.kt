@@ -1,11 +1,8 @@
 package org.superluigi.yahtzee.model
 
-import org.apache.commons.lang3.NotImplementedException
+import org.superluigi.yahtzee.view.Face
 
-object Die {
-
-    fun apply() {
-        throw NotImplementedException("Successful Fail! :)")
-    }
-}
-
+data class Die(
+    var face: Face,
+    var locked: Boolean
+)

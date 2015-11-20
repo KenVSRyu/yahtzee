@@ -1,4 +1,4 @@
-package org.protoworld.gui
+package org.superluigi.yahtzee.view
 
 import javafx.application.Application
 
