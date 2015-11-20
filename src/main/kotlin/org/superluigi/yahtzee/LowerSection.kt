@@ -1,3 +1,5 @@
+package org.superluigi.yahtzee
+
 class LowerSection(private val dice: List<Int>) {
 
     private val sumOfAllDice = Sum.calculate(dice)
@@ -14,46 +16,44 @@ class LowerSection(private val dice: List<Int>) {
         if (counts.contains(3))
             sumOfAllDice
         else
-            null
+            0
 
     private val fourOfAKind =
         if (counts.contains(4))
             sumOfAllDice
         else
-            null
+            0
 
     private val fullHouse =
         if (counts.contains(3) && counts.contains(2))
             25
         else
-            null
+            0
 
     private val smallStraight =
         if (
-        dice.containsAll(setOf(1, 2, 3, 4)) ||
+            dice.containsAll(setOf(1, 2, 3, 4)) ||
             dice.containsAll(setOf(2, 3, 4, 5)) ||
             dice.containsAll(setOf(3, 4, 5, 6))
         )
             30
         else
-            null
+            0
 
     private val largeStraight =
         if (
-        dice.containsAll(setOf(1, 2, 3, 4, 5)) ||
+            dice.containsAll(setOf(1, 2, 3, 4, 5)) ||
             dice.containsAll(setOf(2, 3, 4, 5, 6))
         )
             40
         else
-            null
-
-    private val chance = sumOfAllDice
+            0
 
     private val yahtzee =
         if (dice.distinct().size == 1)
             50
         else
-            null
+            0
 
     val fields =
         hashMapOf(
@@ -62,7 +62,7 @@ class LowerSection(private val dice: List<Int>) {
             Pair("Full House", fullHouse),
             Pair("Small straight", smallStraight),
             Pair("Large straight", largeStraight),
-            Pair("Chance", chance),
+            Pair("Chance", sumOfAllDice),
             Pair("Yahtzee", yahtzee)
         )
 

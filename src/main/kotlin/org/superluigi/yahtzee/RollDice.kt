@@ -1,3 +1,5 @@
+package org.superluigi.yahtzee
+
 object RollDice {
 
     fun apply(numDice: Int): List<Int> {
