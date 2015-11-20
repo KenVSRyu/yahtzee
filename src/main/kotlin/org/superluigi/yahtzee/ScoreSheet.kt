@@ -1,8 +1,10 @@
+package org.superluigi.yahtzee
+
 import java.util.*
 
 data class ScoreSheet(
 
-    val fields: HashMap<String, Int?> =
+    val upperSection: HashMap<String, Int?> =
 
         hashMapOf(
             Pair("Ones", null),
@@ -10,17 +12,24 @@ data class ScoreSheet(
             Pair("Threes", null),
             Pair("Fours", null),
             Pair("Fives", null),
-            Pair("Sixes", null),
-            Pair("Sum", null),
-            Pair("Bonus", null),
+            Pair("Sixes", null)
+        ),
+
+
+    var sum: Int = 0,
+    var bonus: Int = 0,
+
+    val lowerSection: HashMap<String, Int?> =
+        hashMapOf(
             Pair("Three of a kind", null),
             Pair("Four of a kind", null),
             Pair("Full House", null),
             Pair("Small straight", null),
             Pair("Large straight", null),
             Pair("Chance", null),
-            Pair("Yahtzee", null),
-            Pair("Total", null)
-    )
+            Pair("Yahtzee", null)
+    ),
+
+    var total: Int = 0
 
 )

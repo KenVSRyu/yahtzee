@@ -1,0 +1,9 @@
+package org.protoworld.gui
+
+import javafx.application.Application
+
+fun main(args: Array<String>) {
+
+    Application.launch(View::class.java)
+
+}

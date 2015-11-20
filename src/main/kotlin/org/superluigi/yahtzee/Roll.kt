@@ -1,4 +1,6 @@
-object RollDice {
+package org.superluigi.yahtzee
+
+object Roll {
 
     fun apply(numDice: Int): List<Int> {
 
