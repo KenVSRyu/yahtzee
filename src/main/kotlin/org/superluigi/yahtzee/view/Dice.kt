@@ -4,21 +4,17 @@ import javafx.scene.control.Button
 import javafx.scene.layout.ColumnConstraints
 import javafx.scene.layout.GridPane
 import javafx.scene.layout.RowConstraints
-import org.superluigi.yahtzee.model.Die
 
-class DiceButtons(
-    val dice: List<Die>
-) {
+object Dice {
 
-    private val diceGrid = GridPane()
-    private val diceGridColumn = ColumnConstraints()
-    private val diceGridRow = RowConstraints()
-    private val dieColumn = ColumnConstraints()
-    private val diceRow = RowConstraints()
+    val diceGrid = GridPane()
+    val diceGridColumn = ColumnConstraints()
+    val diceGridRow = RowConstraints()
+    val dieColumn = ColumnConstraints()
+    val diceRow = RowConstraints()
+    val dice = Array(5, { Button() })
 
-    fun addToGrid(grid: GridPane): Pair<GridPane, List<Button>> {
-
-        val diceButtons = DiceToButtons.apply(dice)
+    fun addToGrid(grid: GridPane) {
 
         diceGrid.gridLinesVisibleProperty().set(true)
 
@@ -42,7 +38,7 @@ class DiceButtons(
 
         diceGrid.rowConstraints.add(diceRow)
 
-        diceButtons.forEachIndexed { index, die ->
+        dice.forEachIndexed { index, die ->
 
             diceGrid.add(die, index, 0)
 
@@ -50,8 +46,6 @@ class DiceButtons(
 
         grid.add(diceGrid, 0, 0)
 
-        return Pair(diceGrid, diceButtons)
-
     }
-
 }
+
