@@ -4,6 +4,7 @@ import javafx.application.Application
 import javafx.scene.Scene
 import javafx.scene.layout.GridPane
 import javafx.stage.Stage
+import org.superluigi.yahtzee.model.CurrentDice
 
 class View : Application() {
 
@@ -12,7 +13,18 @@ class View : Application() {
         val grid = GridPane()
         grid.gridLinesVisibleProperty().set(true)
 
-        Dice.addToGrid(grid)
+        val currentDice =
+            CurrentDice(
+                Face.TWO,
+                Face.THREE,
+                Face.FOUR,
+                Face.FIVE,
+                Face.SIX
+            )
+
+        val dice = DiceButtons(currentDice)
+
+        dice.addToGrid(grid)
 
         RollButton.addToGrid(grid)
 

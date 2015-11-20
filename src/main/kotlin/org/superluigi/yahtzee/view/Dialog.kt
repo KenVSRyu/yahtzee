@@ -5,6 +5,7 @@ import javafx.scene.control.Label
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.GridPane
 import javafx.scene.layout.RowConstraints
+import javafx.scene.text.Font
 
 object Dialog {
 
@@ -18,6 +19,8 @@ object Dialog {
         val dialogLabel = Label("YAHTZEE")
 
         dialogLabel.contentDisplay = ContentDisplay.CENTER
+
+        dialogLabel.font = Font("Lucida Console", 30.0)
 
         val borderPane = BorderPane()
 
